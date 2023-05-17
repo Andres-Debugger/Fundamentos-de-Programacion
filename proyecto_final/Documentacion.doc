@@ -1,0 +1,59 @@
+o que se tiene:
+
+La empresa FUTURE, C.A. desea implementar un sistema que permita llevar el control de sus trabajadores, registrando su información personal y laboral.
+Los datos a registrar por cada trabajador son: Cédula de Identidad (CI), Nombre y Apellido, Departamento, Cargo, Sueldo que devenga y Fecha de ingreso.
+El sistema debe contener un menú con cinco opciones: Ingresar, Consultar, Modificar, Eliminar y Salir.
+El sistema debe almacenar toda la información en un archivo llamado trabajadores.in, y generar archivos adicionales para las consultas por Departamento y Cargo, así como para la información de trabajadores desincorporados.
+
+Lo que se pide:
+Un sistema que permita registrar, consultar, modificar y eliminar información de los trabajadores de la empresa, de manera eficiente y organizada.
+
+Cómo se hace:
+
+Se debe implementar un programa que permita llevar a cabo las acciones mencionadas mediante la interacción con el usuario a través del menú de opciones.
+Para el módulo Ingresar, se debe solicitar al usuario el número de trabajadores a ingresar, y luego pedir la información de cada uno de ellos. Esta información se debe almacenar en el archivo trabajadores.in.
+Para el módulo Consultar, se deben implementar las cuatro opciones indicadas en el enunciado, cada una de las cuales debe leer la información del archivo trabajadores.in y mostrar los resultados al usuario.
+Para el módulo Modificar, se debe solicitar la CI del trabajador a modificar y luego permitir al usuario cambiar cualquiera de los campos de información, excepto la CI. Los cambios deben reflejarse en el archivo trabajadores.in.
+Para el módulo Eliminar, se debe solicitar la CI del trabajador a eliminar, mostrar toda su información al usuario y pedir confirmación antes de proceder con la eliminación. La información del trabajador eliminado debe ser almacenada en el archivo extrabajadores.txt.
+
+Diagrama de módulos e interacciones:
+
++---------------------+        +------------------------+        +---------------------+
+|      Menú de         |        |       Archivo           |        |    Archivo          |
+|      opciones        |        |       trabajadores.in   |        |    departamento.txt |
++---------------------+        +------------------------+        +---------------------+
+| 1. Ingresar         |        | - Leer información      |        | - Almacenar          |
+|                     |        | - Escribir información  |        |   información por    |
+|                     |        |   en archivo            |        |   departamento       |
+|                     |        |                          |        |                     |
+| 2. Consultar        |        |                          |        | - Leer información  |
+|                     |        |                          |        |   del archivo        |
+|   a. Por CI         |        |                          |        |   trabajadores.in    |
+|   b. Por Departamento |      |                          |        |   y mostrar          |
+|   c. Por Cargo       |      |                          |        |   resultados al      |
+|   d. Mayor y menor sueldo | |                          |        |   usuario            |
+|                     |        |                          |        |                     |
+| 3. Modificar        |        | - Leer información      |        | - Leer información  |
+|                     |        |   del archivo            |        |   del archivo        |
+|                     |        | - Permitir al usuario    |        | - Permitir al usuario|
+|                     |        |   modificar información |        |   elegir el           |
+|                     |        | - Escribir información  |        |   departamento       |
+|                     |        |   modificada en archivo |        |   y el archivo       |
+|                     |        |                          |        |   generado           |
+| 4. Eliminar         |        | - Leer información      |        | - Leer información  |
+|                     |        |   del archivo            |        |   del archivo        |
+|                     |        | - Mostrar información    |        | - Almacenar          |
+|                     |        |   del trabajador         |        |   información del    |
+|                     |        | - Pedir confirmación     |        |   trabajador         |
+|                     |        | - Eliminar información   |        |   desincorporado en  |
+|                     |        |   del archivo            |        |   archivo             |
+|                     |        | - Almacenar información  |        |   extrabajadores.txt |
+|                     |        |   del trabajador         |        |                     |
+|                     |        |   desincorporado         |        |                     |
++---------------------+        +------------------------+        +---------------------+
+
+Limitaciones del sistema:
+
+El sistema no permite la búsqueda por campos adicionales, como nombres o fechas de ingreso.
+El sistema no tiene un sistema de autenticación de usuarios o control de acceso, por lo que cualquiera con acceso al sistema puede realizar cualquier acción.
+El sistema no tiene una función de respaldo o recuperación de datos en caso de fallas o pérdidas.
