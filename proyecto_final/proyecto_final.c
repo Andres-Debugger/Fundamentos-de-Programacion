@@ -55,6 +55,203 @@ return archivo;
 
 }
 
+void modulo_2(int opcion){
+
+    int found = 0, cedula, departamento, cargo, ci, role, depart, sort;
+    char *nombre, *fecha_ingreso;
+    float sueldo;
+    FILE *file;
+
+    switch(opcion) {
+        case 1: 
+            printf("Ingrese la Cédula de Identidad por la que desea consultar: ");
+            scanf("%d", &cedula);
+
+            file = fopen("trabajadores.in", "r");
+
+            if (file == NULL) {
+                printf("No se pudo abrir el archivo\n");
+                exit(1);
+            }
+
+            while(!feof(file)) {
+                fscanf(file, "%d,%s %d,%d,%f,%s,\n", &ci, nombre, &departamento, &cargo, &sueldo, fecha_ingreso);
+                if (cedula == ci){
+                    found = 1;
+                    printf("CI: %d\n", ci);
+                    printf("Nombre: %s\n", nombre);
+                    printf("Departamento: %d\n", departamento);
+                    printf("Cargo: %d\n", cargo);
+                    printf("Sueldo: %f\n", sueldo);
+                    printf("Fecha de Ingreso: %s\n", fecha_ingreso);
+                    break;
+                }
+            }
+
+            if(!found) {
+                printf("La CI indicada no está asociada a ningún trabajador de la empresa.\n");
+            }
+
+            fclose(file);
+
+            break;
+
+        case 2:
+            printf("Ingrese el numero del departamento por el que desea consultar: ");
+            scanf("%d", &depart);
+
+            file = fopen("trabajadores.in", "r");
+
+            if (file == NULL) {
+                printf("No se pudo abrir el archivo\n");
+                exit(1);
+            }
+
+            while(!feof(file)) {
+                fscanf(file, "%d,%s %d,%d,%f,%s,\n", &ci, nombre, &departamento, &cargo, &sueldo, fecha_ingreso);
+                if (depart == departamento){
+                    found = 1;
+                    printf("CI: %d\n", ci);
+                    printf("Nombre: %s\n", nombre);
+                    printf("Departamento: %d\n", departamento);
+                    printf("Cargo: %d\n", cargo);
+                    printf("Sueldo: %f\n", sueldo);
+                    printf("Fecha de Ingreso: %s\n", fecha_ingreso);
+                    break;
+                }
+            }
+
+            if(!found) {
+                printf("El numero indicado no concuerda con ninguno de los departamentos de la empresa.\n");
+            }
+
+            fclose(file);
+
+            break;
+
+        case 3:
+            printf("Ingrese el numero del cargo por el que desea consultar: ");
+            scanf("%d", &cargo);
+
+            file = fopen("trabajadores.in", "r");
+if (file == NULL) {
+                printf("No se pudo abrir el archivo\n");
+                exit(1);
+            }
+
+            while(!feof(file)) {
+                fscanf(file, "%d,%s %d,%d,%f,%s,\n", &ci, nombre, &departamento, &cargo, &sueldo, fecha_ingreso);
+                if (cedula == ci){
+                    found = 1;
+                    printf("CI: %d\n", ci);
+                    printf("Nombre: %s\n", nombre);
+                    printf("Departamento: %d\n", departamento);
+                    printf("Cargo: %d\n", cargo);
+                    printf("Sueldo: %f\n", sueldo);
+                    printf("Fecha de Ingreso: %s\n", fecha_ingreso);
+                    break;
+                }
+            }
+
+            if(!found) {
+                printf("El numero indicado no concuerda con ninguno de los cargos de la empresa.\n");
+            }
+
+            fclose(file);
+
+            break;
+
+        case 4:
+            printf("Ingrese 1 para ordenar los trabajadores de mayor a menor sueldo o 2 para ordenarlos de menor a mayor: ");
+            scanf("%d", &sort);
+            
+            if(sort == 1){
+                printf("qlq");
+            } else if(sort == 2){
+                printf("qlq2");
+                
+            } else {
+                printf("\nEl numero indicado no concuerda con ninguno de las opciones.\n");
+            }
+
+            break;
+
+        default:
+            printf("Opción inválida\n");
+    }
+}
+/* Modulo 3*/
+void modulo_3(int ci_nueva){
+FILE *archent;
+int modificacion = 0,  cedula, departamento, cargo, ci, role, depart, sort;
+    char *nombre, *fecha_ingreso;
+    float sueldo;
+    archent = fopen("trabajadores.in","r+");
+  
+   if (archent == NULL) {
+                printf("No se pudo abrir el archivo\n");
+                exit(1);
+            }
+
+    while(!feof(archent)) {
+               
+        fscanf(archent, "%d,%s %d,%d,%f,%s,\n", &ci, nombre, &departamento, &cargo, &sueldo, fecha_ingreso);
+                if (ci_nueva == ci){           
+        printf("que desea modificar?: 1.Nombre, 2.departamento, 3.cargo, 4. sueldo 5.fecha ingreso ");
+       do{
+        scanf("%d",modificacion);
+        if(modificacion < 1 || modificacion > 5){
+            printf("error escriba nuevamente");
+        }
+       }while(modificacion < 0 || modificacion > 5);
+
+        if(modificacion == 1){
+            fflush(stdin);
+            printf("Ingrese el nuevo nombre:\n");
+             gets( nombre);
+            fprintf(archent,"%d,%s,%d,%d,%f,%s,\n", ci, nombre,departamento, cargo, sueldo, fecha_ingreso );
+            }else{
+                if(modificacion == 2){
+
+            printf("Ingrese el nuevo departamento del trabajador (1: RRHH, 2: Consultoria, 3: Diseno, 4: Produccion, 5: Calidad, 6: Distribucion): \n");
+             scanf("%d", &departamento);
+             fprintf(archent,"%d,%s,%d,%d,%f,%s,\n", ci, nombre,departamento, cargo, sueldo, fecha_ingreso );
+
+                }else{
+                    if(modificacion == 3){
+                    printf("Ingrese el nuevo cargo del trabajador (1: Gerente, 2: Supervisor, 3: Analista, 4: Diseñador, 5: Desarrollador, 6: Auditor): \n");
+                    scanf("%d", &cargo);
+                     fprintf(archent,"%d,%s,%d,%d,%f,%s,\n", ci, nombre,departamento, cargo, sueldo, fecha_ingreso );
+
+                    }else{
+                        if(modificacion == 4){
+                             printf("Ingrese el nuevo sueldo del trabajador: \n");
+                            scanf("%f", &sueldo);
+                            fprintf(archent,"%d,%s,%d,%d,%f,%s,\n", ci, nombre,departamento, cargo, sueldo, fecha_ingreso );
+                        }else{
+                             fflush(stdin);
+                            printf("Ingrese la nueva fecha de ingreso del trabajador en formato dd/mm/aa, con las barras ");
+                            scanf("%s",&fecha_ingreso);
+                        fprintf(archent,"%d,%s,%d,%d,%f,%s,\n", ci, nombre,departamento, cargo, sueldo, fecha_ingreso );
+                        }
+                    }
+                }
+            }
+
+            
+            
+        }else{
+            printf("no se ha encontrado la cedula");
+            return;
+        }
+    }
+}
+
+/*Modulo 4*/
+
+ void modulo_4(){
+    
+ }
 
 
 int main() {
